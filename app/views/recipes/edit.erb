@@ -1,11 +1,11 @@
 <h1> Redo the Masterpiece! </h1>
 <form action="/recipes/<%=@recipe.id%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  Edit'ed Name:
-  <input type="text" name="name" size=52><br><br>
-  Edit'ed Ingredients:
-  <textarea name="ingredients" cols=50 rows=5></textarea><br><br>
-  Edit'ed Procedure:
-  <textarea name="procedure" cols=50 rows=5></textarea><br><br>
+  Edit Name:
+  <p><input type="text" name="name" size=52 value="<%=@recipe.name%>"></p><br><br>
+  Edit Ingredients:
+  <p><textarea name="ingredients" cols=50 rows=5><%=@recipe.ingredients%></textarea></p><br><br>
+  Edit Procedure:
+  <p><textarea name="procedure" cols=50 rows=10><%=@recipe.procedure%></textarea></p><br><br>
   <input type="submit" value="submit">
 </form>
