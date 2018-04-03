@@ -1,5 +1,18 @@
 <h1> <%=@recipe.name%> </h1>
-<h2> Ingredients: <%=@recipe.ingredients%> </h2>
-<h2> Procedure: <%=@recipe.procedure%> </h2>
+<h2> Ingredients: </h2>
+<h4> <%=@recipe.ingredients%> </h4>
+<h2> Procedure: </h2>
+<h4> <%=@recipe.procedure%> </h4>
 
-<a href="/recipes"><button class="button">Home</button></a>
+
+<br>
+<a href="/recipes/<%=@recipe.id%>/edit"><button>Edit</button></a>
+
+
+<br><br>
+<form action="/recipes/<%= @recipe.id %>/delete" method="post">
+	<input id="hidden" type="hidden" name="_method" value="delete">
+	<button>Delete</button>
+</form>
+<br>
+<a href="/recipes"><button>Home</button></a>

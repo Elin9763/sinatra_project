@@ -21,4 +21,36 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find_by(id: params[:id])
     erb :'/recipes/show'
   end
+
+  get '/recipes/:id/edit' do
+    @recipe = Recipe.find_by(id: params[:id])
+    erb :'recipes/edit'
+  end
+
+  post '/recipes/:id' do
+    @recipe = Recipe.find_by(id: params[:id])
+  	@recipe.update(name: params["name"], ingredients: params["ingredients"], procedure: params["procedure"])
+    @recipe.save
+    redirect to "/recipes/#{params[:id]}"
+  end
+
+  patch '/recipes/:id' do
+    @recipe = Recipe.find_by_id(params[:id])
+    @recipe.name = params[:name]
+    @recipe.ingredients = params[:ingredients]
+    @recipe.procedure = params[:procedure]
+    @recipe.save
+    redirect to "/recipes/#{@recipe.id}"
+  end
+
+  delete '/recipes/:id/delete' do
+    @recipe = Recipe.find_by(id: params[:id])
+    if logged_in?
+      @recipe.destroy
+      redirect '/recipes'
+    else
+      redirect "/recipes/#{@recipe.id}"
+    end
+  end
+
 end
