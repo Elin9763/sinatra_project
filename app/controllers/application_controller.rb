@@ -20,13 +20,5 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    if @user
-      erb :'/users/show'
-    else
-      redirect '/'
-    end
-  end
 
 end
