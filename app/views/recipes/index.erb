@@ -1,12 +1,12 @@
-<h1> Welcome to your Unorthodox Recipes </h1>
+<h1> Welcome to your Unorthodox Recipes <%=@user.username%> </h1>
 <h2> Create a New Dish(Your Masterpiece) </h2>
   <a href="recipes/new"><button>New</button></a><br><br>
 
 <%Recipe.all.each do |recipe|%>
 
-<a href="/recipes/<%=recipe.id%>"><%=recipe.name%></a><br>
-<%end%>
-<br><br>
+<h3><a href="/recipes/<%=recipe.id%>"><%=recipe.name%></a></h3>
 
 <br>
+<%end%>
+
 <a href="/logout"><button>Log Out</button></a>

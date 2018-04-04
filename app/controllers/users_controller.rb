@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if logged_in?
-      redirect '/recipes'
-    else
+    if !logged_in?
       erb :'users/login'
+    else
+      redirect '/recipes'
     end
   end
 
@@ -44,6 +44,12 @@ class UsersController < ApplicationController
     else
       redirect 'users/login'
     end
+  end
+
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+		@current_user = current_user
+		erb :'users/show'
   end
 
 end
