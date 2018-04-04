@@ -5,8 +5,9 @@
 <h4> <%=@recipe.procedure%> </h4>
 
 
-<form action="/recipes/<%=@recipe.id%>/delete" method="post">
 <a href="/recipes/<%=@recipe.id%>/edit"><button class="small button" id="red">Edit</button></a>
+<br><br>
+<form action="/recipes/<%=@recipe.id%>/delete" method="post">
 	<input id="hidden" type="hidden" name="_method" value="delete">
 	<button value="delete" class="small button" id="red">Delete</button>
 </form>
