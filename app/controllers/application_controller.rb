@@ -9,18 +9,24 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "sinatra_project"
   end
 
-  get '/' do
-    erb :index
-  end
-
   helpers do
     def logged_in?
       !!current_user
     end
 
     def current_user
-      User.find_by(id: session[:user_id]) if session[:user_id]
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
-
   end
+
+
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    if @user
+      erb :'/users/show'
+    else
+      redirect '/'
+    end
+  end
+
 end

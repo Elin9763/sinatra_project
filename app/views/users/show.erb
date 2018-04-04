@@ -1,0 +1,17 @@
+<%if @user == @current_user %>
+	<h3>Here are your recipes:</h3>
+<%else%>
+	<h3><%=@user.username%>'s recipes:</h3>
+<%end%>
+
+<%Recipe.all.each do |recipe|%>
+
+<a href="/recipes/<%=recipe.id%>"><%=recipe.name%></a><br>
+<%end%>
+
+
+<br>
+
+
+
+<a href="/recipes"><button>Home</button></a>

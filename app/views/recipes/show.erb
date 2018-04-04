@@ -10,9 +10,12 @@
 
 
 <br><br>
+<%@recipe.users == @user%>
 <form action="/recipes/<%= @recipe.id %>/delete" method="post">
 	<input id="hidden" type="hidden" name="_method" value="delete">
 	<button>Delete</button>
 </form>
+
+
 <br>
 <a href="/recipes"><button>Home</button></a>
