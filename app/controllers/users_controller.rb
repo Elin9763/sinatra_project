@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   get '/' do
     erb :index
   end
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to "/users/#{@user.slug}"
+      redirect to "/recipes"
     else
       redirect to '/login'
     end
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(username: params[:username], email: params[:email], password: params[:password])
     if @user.save
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/recipes"
     else
       redirect 'users/signup'
     end
@@ -44,12 +43,6 @@ class UsersController < ApplicationController
     else
       redirect 'users/login'
     end
-  end
-
-  get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-		@current_user = current_user
-		erb :'users/show'
   end
 
 end

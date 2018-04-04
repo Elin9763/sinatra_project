@@ -5,16 +5,15 @@
 <h4> <%=@recipe.procedure%> </h4>
 
 
-<br>
-<a href="/recipes/<%=@recipe.id%>/edit"><button>Edit</button></a>
-
-
-<br><br>
-<%@recipe.users == @user%>
-<form action="/recipes/<%= @recipe.id %>/delete" method="post">
+<form action="/recipes/<%=@recipe.id%>/delete" method="post">
+<a href="/recipes/<%=@recipe.id%>/edit"><button class="small button" id="red">Edit</button></a>
 	<input id="hidden" type="hidden" name="_method" value="delete">
-	<button>Delete</button>
+	<button value="delete" class="small button" id="red">Delete</button>
 </form>
+
+
+
+
 
 
 <br>
