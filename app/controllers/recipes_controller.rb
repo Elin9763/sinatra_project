@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   end
 
   post '/recipes' do
-    @recipe = Recipe.new(name: params["name"], ingredients: params["ingredients"], procedure: params["procedure"])
+    @recipe = current_user.recipes.build(name: params["name"], ingredients: params["ingredients"], procedure: params["procedure"])
   	if @recipe.save
       redirect "/recipes/#{@recipe.id}"
     else
@@ -43,10 +43,12 @@ class RecipesController < ApplicationController
 
   delete '/recipes/:id/delete' do
     @recipe = Recipe.find_by(id: params[:id])
-    @recipe.destroy
-    redirect '/recipes'
-
-
+    if @recipe.user_id == current_user.id
+      @recipe.destroy
+      redirect '/recipes'
+    else
+      redirect '/recipes'
+    end
   end
 
 end

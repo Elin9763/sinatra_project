@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if !logged_in?
-      erb :'users/login'
+    if !session[:user_id]
+      erb :"users/login"
     else
-      redirect '/recipes'
+      redirect to '/recipes'
     end
   end
 
