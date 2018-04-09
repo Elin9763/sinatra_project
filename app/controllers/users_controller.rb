@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  get '/' do
+  get '/index' do
     erb :index
   end
 
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to "/recipes"
     else
+      flash[:warning] = "Please double check your username and password!"
       redirect to '/login'
     end
   end
@@ -32,7 +33,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/recipes"
     else
-      redirect 'users/signup'
+      flash[:warning] = "Did you miss something?"
+      redirect '/signup'
     end
   end
 
