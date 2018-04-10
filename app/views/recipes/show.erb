@@ -1,8 +1,10 @@
 <h1> <%=@recipe.name%> </h1>
-<h2> Ingredients: </h2>
-<h4> <%=@recipe.ingredients%> </h4>
-<h2> Procedure: </h2>
-<h4> <%=@recipe.procedure%> </h4>
+<h3> Ingredients: </h3>
+<h5> <%=@recipe.ingredients%> </h5>
+<h3> Procedure: </h3>
+<h5><%=@recipe.procedure%> </h5>
+
+
 
 
 <a href="/recipes/<%=@recipe.id%>/edit"><button class="small button" id="red">Edit</button></a>

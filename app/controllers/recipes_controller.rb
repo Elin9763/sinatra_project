@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  patch '/recipes/:id' do
+  post '/recipes/:id' do
     @recipe = Recipe.find_by(id: params[:id])
     @recipe.name = params[:name]
     @recipe.ingredients = params[:ingredients]
