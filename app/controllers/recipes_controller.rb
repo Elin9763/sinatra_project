@@ -34,12 +34,15 @@ class RecipesController < ApplicationController
 
   post '/recipes/:id' do
     @recipe = Recipe.find_by(id: params[:id])
-    @recipe.user_id == current_user.id
-    @recipe.name = params[:name]
-    @recipe.ingredients = params[:ingredients]
-    @recipe.procedure = params[:procedure]
-    @recipe.save
-    redirect to "/recipes/#{@recipe.id}"
+    if @recipe.user_id == current_user.id
+      @recipe.name = params[:name]
+      @recipe.ingredients = params[:ingredients]
+      @recipe.procedure = params[:procedure]
+      @recipe.save
+      redirect to "/recipes/#{@recipe.id}"
+    else
+      redirect to '/recipes'
+    end
   end
 
   delete '/recipes/:id/delete' do
